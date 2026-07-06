@@ -11,31 +11,26 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root,int &nodes){
+    void trav(TreeNode* root,int &x){
         if(root==NULL){
-            return ;
+            return;
         }
-         if(root->left==NULL && root->right==NULL){
-            nodes++;
-            return ;
+        if(root->left){
+            x++;
+        trav(root->left,x);
         }
-        inorder(root->left,nodes);
-        inorder(root->right,nodes);
-        nodes++;
-
-
-
+        if(root->right){
+            x++;
+        trav(root->right,x);
+        }
     }
     int countNodes(TreeNode* root) {
-        int nodes=0;
-        if(root==NULL){
+         if(root==NULL){
             return 0;
         }
-        if(root->left==NULL &&root->right==NULL){
-            return 1;
-        }
-        inorder(root,nodes);
-        return nodes;
-
+        int x=0;
+        trav(root,x);
+        return x+1;
     }
+
 };
