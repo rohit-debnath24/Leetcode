@@ -11,24 +11,31 @@
  */
 class Solution {
 public:
-    
-    int calMax(TreeNode* root){
-        if(root==NULL)
-                return 0;
-        //  if(root->left ==NULL )
-        //         return 0;
-        //         if(root->right==NULL)
-        //         return 0;
-
-                int l=calMax(root->left);
-                int r=calMax(root->right);
-            //    int sum=l+r;
-                // res=max(res,sum);
-           return 1+max(l,r); 
-        }
-    int maxDepth(TreeNode* root) {
-        int res=0;
+    void height(TreeNode*root,int& h,int x){
         
-     return calMax(root); 
+        if(root==NULL){
+            return;
+        }
+        x++;
+        h=max(x,h);
+        height(root->left,h,x);
+        height(root->right,h,x);
+    }
+    int maxDepth(TreeNode* root) {
+        int hl=0;
+        int hr=0;
+        if(!root){
+            return hl;
+        }
+        if(root->left){
+        height(root->left,hl,0);
+
+        }
+        if(root->right){
+        height(root->right,hr,0);
+
+        }
+        int h=max(hl,hr);
+        return h+1;
     }
 };
