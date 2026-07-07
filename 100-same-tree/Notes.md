@@ -1,1 +1,1 @@
-<h2>same-tree Notes</h2><hr>[ Time taken: 5 hrs 42 m 58 s ]
+<h2>same-tree Notes</h2><hr>[ Time taken: 1hr 52m 24s ]
