@@ -11,37 +11,17 @@
  */
 class Solution {
 public:
-    void check(TreeNode* p, TreeNode* q,bool &x){
-        if(!p||!q){
-            return;
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+       
+        if(p==NULL && q==NULL){
+            return 1;
+        }
+        if(!p && q || p && !q){
+            return 0;
         }
         if(p->val!=q->val){
-            x= false;
+            return 0;
         }
-        if(p->left!=NULL && q->left!=NULL ){
-        check(p->left,q->left,x);
-        }else if (p->left!=NULL && q->left==NULL){
-            x=false;
-        }else if(p->left==NULL && q->left!=NULL){
-            x=false;
-        }
-
-        if(p->right!=NULL && q->right!=NULL){
-        check(p->right,q->right,x);
-        }else if(p->right!=NULL && q->right==NULL){
-            x=false;
-        }else if(p->right==NULL && q->right!=NULL){
-            x=false;
-        }
-
-        
-    }
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if((!p && q) ||(p && !q) ){
-            return false;
-        }
-        bool x=true;
-        check(p,q,x);
-        return x;
+        return isSameTree(p->left,q->left) && isSameTree(p->right,q->right);
     }
 };
